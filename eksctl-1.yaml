@@ -1,0 +1,37 @@
+# A simple example of ClusterConfig object:
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: uranus
+  region: us-east-2
+
+vpc:
+  id: "vpc-04031830325f00d74"  # eksctl-uranus-cluster/VPC
+  cidr: "12.10.0.0/16"       # (optional, must match CIDR used by the given VPC)
+  subnets:
+    # must provide 'private' and/or 'public' subnets by availability zone as shown
+    private:
+      us-east-2a:
+        id: "subnet-0e4703f0a4f0f6d85"
+        cidr: "12.10.128.0/19" # (optional, must match CIDR used by the given subnet)
+
+      us-east-2b:
+        id: "subnet-00a40a68cd2d26f0a"
+        cidr: "12.10.64.0/19"  # (optional, must match CIDR used by the given subnet)
+
+      us-east-2c:
+        id: "subnet-0c0d45a5c2c52a754"
+        cidr: "12.10.0.0/19"   # (optional, must match CIDR used by the given subnet)
+
+managedNodeGroups:
+  - name: uranus
+    instanceType: m5.large
+    desiredCapacity: 4
+    minSize: 4
+    maxSize: 4
+    volumeSize: 100
+    volumeType: gp2
+    labels:
+      nodegroup-type: uranus
