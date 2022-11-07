@@ -1,0 +1,25 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: uranus
+  region: us-east-2
+  version: 1.23
+
+vpc: 
+  cidr: 12.10.0.0/16 
+  autoAllocateIPv6: true
+  # disable public access to endpoint and only allow private access
+  clusterEndpoints:
+    publicAccess: false
+    privateAccess: true
+
+nodeGroups:
+  - name: uranus
+    instanceType: m5.xlarge
+    minSize: 4
+    maxSize: 4
+    volumeSize: 100
+    volumeType: gp2
+    labels:
+      nodegroup-type: uranus
