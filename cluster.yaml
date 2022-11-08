@@ -12,8 +12,7 @@ vpc:
   cidr: 12.0.0.0/16
 
 managedNodeGroups:
-  - name: ng-1
-    instanceType: m5.xlarge
+  - instanceType: m5.xlarge
     desiredCapacity: 4
     minSize: 4
     maxSize: 4
