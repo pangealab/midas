@@ -2,7 +2,7 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: uranus
+  name: midas
   region: us-east-2
   version: 1.23
 
@@ -15,7 +15,7 @@ vpc:
     privateAccess: true
 
 nodeGroups:
-  - name: uranus
+  - name: midas
     instanceType: m5.xlarge
     minSize: 4
     maxSize: 4

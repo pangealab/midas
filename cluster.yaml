@@ -1,0 +1,28 @@
+# A simple example of ClusterConfig object:
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: midas
+  region: us-east-2
+  # version: "1.23"
+
+vpc: 
+  cidr: 12.0.0.0/16
+
+managedNodeGroups:
+  - name: ng-1
+    instanceType: m5.xlarge
+    desiredCapacity: 4
+    minSize: 4
+    maxSize: 4
+    volumeSize: 100
+    volumeType: gp2
+    ssh:
+      allow: true
+      publicKeyName: midas
+      publicKeyPath: ~/.ssh/midas.pub
+    labels: {role: worker}
+    tags:
+      nodegroup-role: worker
