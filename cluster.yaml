@@ -12,7 +12,8 @@ vpc:
   cidr: 12.0.0.0/16
 
 managedNodeGroups:
-  - instanceType: m5.xlarge
+  - name: ng-1
+    instanceType: m5.xlarge
     desiredCapacity: 4
     minSize: 4
     maxSize: 4
@@ -20,7 +21,6 @@ managedNodeGroups:
     volumeType: gp2
     ssh:
       allow: true
-      publicKeyName: midas
       publicKeyPath: ~/.ssh/midas.pub
     labels: {role: worker}
     tags:
